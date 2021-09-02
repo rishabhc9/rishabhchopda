@@ -55,21 +55,23 @@ body{
   top: 60%;
  
   max-width:100%;
-  
-
 
 }
-#login2{
-  overflow: scroll !important;
+#login1{
   background:#26292e;
-  opacity:0.9;
-  padding:2em;
-  border:#ff005d 2px solid;
-  
- 
+  opacity:0;
+  padding:0.1em;
+  right: 0;
+    left:0px;
 
+  position: absolute;
+  top: 20%;
+ 
+  max-width:100%;
 
 }
+
+
 
 #login input[type="text"], #login input[type="password"]{
   padding:7px;
