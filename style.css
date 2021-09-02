@@ -58,14 +58,16 @@ body{
 
 }
 #login5{
-  background:#26292e;
-  opacity:0;
-  padding:0.1em;
+  background:transparent;
+  opacity:0.9;
+  padding:2em;
+
   right: 0;
+
     left:0px;
 
   position: absolute;
-  top: 20%;
+  top: 10%;
  
   max-width:100%;
 
