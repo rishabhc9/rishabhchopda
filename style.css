@@ -24,6 +24,22 @@ body{
  
 
 }
+#particles-js2{
+  position:fixed;
+    width:200%;
+    height:200%;
+    top:0px;
+    bottom: 0;
+  right: 0;
+  overflow:auto;
+
+    left:0px;
+    z-index:0;
+
+  background:#26292e;
+ 
+
+}
 
 #login{
   background:#26292e;
