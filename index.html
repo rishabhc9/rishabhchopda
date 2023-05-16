@@ -1,154 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta name="description" 
-content="Hey! I Am Rishabh, welcome to my Website!">
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Rishabh Chopda</title>
-  <link rel="stylesheet" href="pf.css">
-  <link rel="stylesheet" href="style.css">
-   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-   
-   <link
-   rel="stylesheet"
-   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
- />
-
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-       
-        <link rel="stylesheet" href="css/all.css">
-        <!-- bootstrap.min -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-      
-        <!-- bootstrap.min -->
-        <link rel="stylesheet" href="css/animate.css">
-        <!-- Main Stylesheet -->
-        <link rel="stylesheet" href="css/main.css">
-
-
-   
-        <script src="js/modernizr-2.6.2.min.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  <meta charset="UTF-8">
+  <style>
+    /* ---- reset ---- */ body{ margin:0; font:normal 75% Arial, Helvetica, sans-serif; } 
+    canvas{ display: block;} /* ---- particles.js container ---- */ 
+    #particles-js{ position:absolute; width: 100%; height: 100%; background-color: #323840; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ 
+    
+  </style>
 </head>
-     <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
-            <div class="container">
-                <div class="navbar-header">
-
-
-               
-                  <h1 class="navbar-brand" style="color:white" >
-                      Rishabh Chopda
-                  </h1>
-                  <h1 style="color:white;margin-left: 1.5em;" class="navbar-brand" >
-                      <a style="color:white;font-size:15px;" href="cv.html">
-                        &lt/About Me&gt
-                      </a>
-                  </h1>
-                    
-           
-        </header>
 <body>
+       
 
 
-  <div id="particles-js" style="max-width:100%;height:auto;">
-
+    <div id="particles-js" style="background-color: #1D1C1A;"></div>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-  <script>
-    particlesJS.load('particles-js', 'particles.json', function(){
-      console.log('particles.json loaded...');
-    });
-
-  </script>
-
-
-    <div id="login">
-  <h1>
-  <a href="" style="color:white;font-size:35px;"class="typewrite" data-period="2000" data-type='[ "Hi, Im Rishabh.", "I am Creative\\.", "I Love Design.", "I Love to Develop." ]'>
-    <span class="wrap"></span>
-  </a>
-</h1>
-
+    <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
   
- <a class="suppoprt-me" href="https://www.buymeacoffee.com/rishabhchopda" target="_blank"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Coffee&nbsp&emoji=&slug=marioduarte&button_colour=FF5F5F&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00"></a>
+<script>
+    particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 200,
+      "density": {
+        "enable": true,
+        "value_area": 700
+      }
+    },
+    "color": {
+        "value":'#874f74',
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": '#4e237d'
+      },
+      "polygon": {
+        "nb_sides": 15
+      }
+    },
+    "opacity": {
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 1.5,
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 4.5,
+      "random": false,
+      "anim": {
+        "enable": true,
+        "speed": 2,
+        "size_min": 0.15,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 80,
+      "color": '#4a4f92',
 
-  <script>
-    particlesJS.load('particles-js', 'particles.json', function(){
-      console.log('particles.json loaded...');
-    });
+      "width": 3
+    },
+    "move": {
+      "enable": true,
+      "speed": 1.6,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 100,
+        "size": 80,
+        "duration": 2,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 50,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});
 
-  </script>
-  
-        <!-- Main jQuery -->
-        <script src="type.js"></script>
-        <script src="js/jquery-1.11.1.min.js"></script>
+document.body.appendChild(stats.domElement);
+count_particles = document.querySelector('.js-count-particles');
+update = function() {
+  stats.begin();
+  stats.end();
+  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+  }
+  requestAnimationFrame(update);
+};
+requestAnimationFrame(update);;
+</script>
+
+<div class="container">
+            
+            <div class="terminal" onClick='f();'>
+              
+            <div class="toolbar">
+                <div class="buttons">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+                <div class="heading">guest@rishabhc9: ~</div>
+                </div>
+            </div>
+            <p>
+                Welcome to Rishabh's portfolio — Type <span>help</span> for a list of supported commands.
+            </p>
+            <br>
+            <br>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+        const asciiText = document.getElementById('ascii-text');
+        const asciiArt = [
+            '      ██████╗ ██╗███████╗██╗  ██╗ █████╗ ██████╗ ██╗  ██╗',
+            '      ██╔══██╗██║██╔════╝██║  ██║██╔══██╗██╔══██╗██║  ██║',
+            '      ██████╔╝██║███████╗███████║███████║██████╔╝███████║',
+            '      ██╔══██╗██║╚════██║██╔══██║██╔══██║██╔══██╗██╔══██║',
+            '      ██║  ██║██║███████║██║  ██║██║  ██║██████╔╝██║  ██║',
+            '      ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝',
+            '                                                         ',
+
+        ];
+
+        function typewriterEffect(text, delay) {
+            return new Promise(resolve => {
+            let index = 0;
+            const interval = setInterval(() => {
+                asciiText.innerHTML += text[index++];
+                if (index >= text.length) {
+                clearInterval(interval);
+                resolve();
+                }
+            }, delay);
+            });
+        }
+
+        async function displayAsciiArt() {
+            for (let i = 0; i < asciiArt.length; i++) {
+            await typewriterEffect(asciiArt[i], 10); // Adjust the delay here (lower value for faster typing)
+            if (i < asciiArt.length - 1) {
+                asciiText.innerHTML += '<br>';
+            }
+            }
+        }
+
+        displayAsciiArt();
+        });
 
 
+
+</script>
+
+
+      <div class="ascii-art">
+        <pre id="ascii-text"></pre>
       </div>
-      <div id="login1">
-        <h1 style="color:white;">
-  <a href="" style="color:white;font-size:35px;"class="typewrite" data-period="500" data-type='[ "Have An Idea?", "Connect With Me", "Lets Create:)" ]'>
-    <span class="wrap"></span>
-  </a>
-</h1>
-<br>
-
-
-<div class="icons">
-  <div class="animate__animated animate__flipInY animate__slower">     
-      <a href="https://github.com/rishabhc9">
-        <div class="layer">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span class="fab fa-github"></span>
-        </div>
-<div class="text">
-GitHub</div>
-</a>
+      <div class="commands"></div>
+      <br>
+      <label for="command">rishabhchopda@rc9 ~ %<label>
+        <input id="command" type="text" autoComplete="on" autofocus/>
+    </div>
   </div>
-  <div class="animate__animated  animate__flipInY animate__slower">  
-      <a href="https://www.linkedin.com/in/rishabh-chopda-16b378151/">
-        <div class="layer">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span class="fab fa-linkedin-in"></span>
-        </div>
-<div class="text">
-Linkedin</div>
-</a>
+  
+
+  <div class="container2">
+    <div class="center">
+<button onclick="downloadPDF()">
+  <span>Download CV</span><i></i>
+</button>
+</div>
 </div>
 
-<div class="animate__animated animate__flipInY animate__slower">  
-<a href="mailto:aaditchopda2@gmail.com">
-  <div class="layer">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span class="far fa-envelope" style="font-size: 32px;padding-top: 10px;padding-left: 10px;"></span>
-  </div>
-<div class="text">
-Mail</div>
-</a>
-</div>
+
+
+<script>
+  function downloadPDF() {
+    // Replace 'path/to/pdf.pdf' with the actual path to your PDF file
+    const pdfURL = 'assets/pdf/Rishabh Chopda - Resume.pdf';
+
+    // Create an anchor element
+    const link = document.createElement('a');
+
+    // Set the href attribute to the PDF file URL
+    link.href = pdfURL;
+
+    // Set the download attribute to specify the file name
+    link.download = 'Rishabh Chopda - Resume.pdf';
+
+    // Programmatically click the link to start the download
+    link.click();
+  }
+</script>
+
+
+
+<footer>
+  <link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <ul>
+         <li><a href="https://github.com/rishabhc9"></a></li>
+         <li><a href="https://www.instagram.com/rishabh.chopda9/"></a></li>
+         <li><a href="mailto:rishabhchopda79@gmail.com"></a></li>
+         <li><a href="https://www.linkedin.com/in/rishabh-chopda-16b378151/"></a></li>
+     </ul>
+    </footer>
+    
       
-    </div> 
+<script src="script.js"></script>
 
-               
-
-        </div>
-
-      </div>
 </body>
 </html>
