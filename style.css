@@ -9,7 +9,7 @@
 
 .ascii-art {
   font-family: monospace;
-  font-size: 20px;
+  font-size: 2vw;
   color: #874f74;
   align-items: left;
   overflow-x: hide;
@@ -73,10 +73,12 @@ font-size: 12px;
   z-index: 1000;
 }
 
+
+
 /* Media query for mobile devices */
 @media (max-width: 1000px) {
   .terminal {
-    height: 85vw;
+    height: 70vw;
   }
 }
 
@@ -332,7 +334,7 @@ button {
   padding: 10px 30px;
   transition: 0.5s;
   margin: 0 auto;
-  margin-top: 160px;
+  margin-top: 10vw;
   height: 8vh;
   width: 35vh;;
   font-size: 22px;
@@ -410,6 +412,8 @@ button.mobile-width {
 /* Media query for mobile devices */
 @media (max-width: 768px) {
   button {
-    width: 100vw;
+    width: 90vw;
+    height: 20vw;
+    align-items: center;
   }
 }
