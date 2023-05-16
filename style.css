@@ -37,31 +37,7 @@
   z-index: 1000;
 }
 
-.profile-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 400px;
-  background: #484a4eef;
-  width: 400px;
-  border-radius: 8px;
-  color: #eee;
-  margin-right: 20px;
-  text-align: center;
-  padding: 5px 20px;
-  z-index: 1000
-}
 
-.profile-card > div > h4{
-  margin: 10px;
-}
-
-.profile-card > div > h6{
-font-size: 12px;
-  opacity: 0.9;
-  font-weight: 200;
-}
 
 .terminal {
   background: #191919;
@@ -85,7 +61,7 @@ font-size: 12px;
 .terminal > p{
   padding-left: 5px;
   color: #888;
-  font-size: 12px;
+  font-size: 1.8vw;
   padding-top: 3px;
   margin-top: 25px;
   z-index: 1000
@@ -142,7 +118,7 @@ input {
   color: #999;
   letter-spacing: 1px;
   font-family: 'Anonymous Pro', monospace;
-  font-size: 12px;
+  font-size: 1.5vw;
   padding-top: 3px;
   padding-bottom: 2px;
   caret-color: #888;
@@ -154,7 +130,7 @@ input {
 label[for="command"] {
   color: #888;
   padding-left: 5px;
-  font-size: 12px;
+  font-size: 1.5vw;
 
 }
 
@@ -190,7 +166,7 @@ label[for="command"] {
 
 .commands {
   color: #888;
-  font-size: 12px;
+  font-size: 1.5vw;
   padding-left: 5px;
 }
 
@@ -415,5 +391,6 @@ button.mobile-width {
     width: 90vw;
     height: 20vw;
     align-items: center;
+    font-size: 22px;
   }
 }
