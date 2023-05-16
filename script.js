@@ -3,7 +3,7 @@ document.addEventListener('keydown', function(e) {
   if (e.keyCode === 13 && input.value) {
     var node = document.createElement("DIV");
     node.style.color = "#888";
-    node.style.fontSize = "12px";
+    node.style.fontSize = "1.5vw";
     node.style.paddingLeft = '5px';
 
     const typeWriter = (text, element) => {
