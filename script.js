@@ -34,8 +34,8 @@ document.addEventListener('keydown', function(e) {
       para.style.display = 'block';
       const text0 = "rishabhchopda@rc9 ~ % About Me: ";
       const text1 = "Extremely motivated to constantly develop my skills and grow professionally.";
-      const text2 = "I am a passionate technologist specializing in automation. I excel in designing and implementing robust automated systems using Python."; 
-      const text3 = "Skilled in languages like Python, C, JavaScript and SQL, I apply my knowledge to practical projects, transforming ideas into effective solutions. Currently, I work at Deloitte, where I leverage my background in computer engineering and passion for technology to drive innovation and make a positive impact.";
+      const text2 = " I am a passionate technologist with a keen eye for detail and precision. I excel in designing and implementing robust automation systems using Python."; 
+      const text3 = " Skilled in languages like C, JavaScript, Python and SQL, I apply my knowledge to practical projects, transforming ideas into effective solutions. Currently, I work at Deloitte, where I leverage my background in computer engineering and passion for technology to drive innovation and make a positive impact.";
       const text = `${text0}\n\n${text1}${text2}${text3}`;
       
       document.querySelector(".commands").appendChild(para);
