@@ -22,7 +22,7 @@ document.addEventListener('keydown', function(e) {
     if (input.value === 'help') {
       const para = document.createElement("p");
       para.style.display = 'block';
-      const text = 'rishabhchopda@rc9 ~ % Supported commands: about, clear, publications, projects, skills, contact';
+      const text = 'rishabhchopda@rc9 ~ % Supported commands: about, clear, publications, projects, skills, contact, services';
       typeWriter(text, para);
       // Set the command label
       document.querySelector(".commands").appendChild(para);
@@ -114,7 +114,7 @@ document.addEventListener('keydown', function(e) {
       para.style.width = '100%';
       para.style.wordWrap = 'break-word';
     
-      const skills = ['rishabhchopda@rc9 ~ % I Work Well With :',"- Python (NumPy, Pandas, Scikit-learn, Matplotlib)", "- HTML", "- CSS", "- JS", "- PHP", "- SQL", "- C Language"];
+      const skills = ['rishabhchopda@rc9 ~ % I Work Well With :',"- Python (Flask, Pandas, Selenium, PyAutoGUI, Scrapy, Beautiful Soup)", "- HTML", "- CSS", "- JS", "- PHP", "- SQL", "- C Language"];
     
       for (let i = 0; i < skills.length; i++) {
         const text = skills[i];
@@ -123,6 +123,28 @@ document.addEventListener('keydown', function(e) {
         skillPara.style.margin = '0';
         typeWriter(text, skillPara);
         para.appendChild(skillPara);
+       
+      }
+      document.querySelector(".commands").appendChild(para);
+    } else if (input.value === 'services') {
+
+      const para = document.createElement("p");
+      const lineBreak9 = document.createElement("br");
+      para.appendChild(lineBreak9);
+      
+      para.style.display = 'block';
+      para.style.width = '100%';
+      para.style.wordWrap = 'break-word';
+    
+      const services = ['rishabhchopda@rc9 ~ % Services at a Glance :',"- Task Scheduling and Workflow Automation", "- Excel Automation", "- Web Scraping and Crawling", "- Telegram and Discord BOTs Development", "- Document Generation and Processing", "- Bot Detection Bypass and IP Rotations", "- Test Automation"];
+    
+      for (let i = 0; i < services.length; i++) {
+        const text = services[i];
+
+        const servicePara = document.createElement("p");
+        servicePara.style.margin = '0';
+        typeWriter(text, servicePara);
+        para.appendChild(servicePara);
        
       }
       document.querySelector(".commands").appendChild(para);
