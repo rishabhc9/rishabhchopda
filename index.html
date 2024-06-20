@@ -1,183 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+  <title>Rishabh Chopda</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terminal</title>
-  <link rel="stylesheet" href="style.css">
   <style>
-    /* Adjustments for particles container */
-    #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #1D1C1A;
-      z-index: -1; /* Ensure particles are behind other content */
-    }
+    /* ---- reset ---- */ body{ margin:0; font:normal 75% Arial, Helvetica, sans-serif; } 
+    canvas{ display: block;} /* ---- particles.js container ---- */ 
+    #particles-js{ position:absolute; width: 100%; height: 100%; background-color: #323840; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ 
+    
   </style>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-sB3R+KawM3Vkf8Evq6q4O0CN9xR8L0H4Uf9IK5e+4n04ysL9nRv6aenSuGV9Sz85Hg3v5cBp8SZfGMWwMkO6rA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <div id="particles-js"></div> <!-- Particles container -->
+       
+
+
+    <div id="particles-js" style="background-color: #1D1C1A;"></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
   
-  <div class="root">
-    <main class="computerContainer">
-      <section class="screenContainer">
-        <div class="screenFrame">
-          <div class="screen">
-            <div class="terminal">
-              <div class="outputContainer">
-                <!-- Output appears here -->
-              </div>
-              <div class="currentLine">
-                <span class="prompt">$</span>
-                <div class="inputContainer">
-                  <input class="input" type="text" autofocus/>
+<script>
+    particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 200,
+      "density": {
+        "enable": true,
+        "value_area": 700
+      }
+    },
+    "color": {
+        "value":'#874f74',
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": '#4e237d'
+      },
+      "polygon": {
+        "nb_sides": 15
+      }
+    },
+    "opacity": {
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 1.5,
+
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 4.5,
+      "random": false,
+      "anim": {
+        "enable": true,
+        "speed": 2,
+        "size_min": 0.15,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 80,
+      "color": '#4a4f92',
+
+      "width": 3
+    },
+    "move": {
+      "enable": true,
+      "speed": 1.6,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 100,
+        "size": 80,
+        "duration": 2,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 50,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});
+
+document.body.appendChild(stats.domElement);
+count_particles = document.querySelector('.js-count-particles');
+update = function() {
+  stats.begin();
+  stats.end();
+  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+  }
+  requestAnimationFrame(update);
+};
+requestAnimationFrame(update);;
+</script>
+
+<div class="container">
+            
+            <div class="terminal" onClick='f();'>
+              
+            <div class="toolbar">
+                <div class="buttons">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+                <div class="heading">guest@rishabhc9: ~</div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
-      <section class="bodyDecor">
-        <div class="floppyDriveContainer">
-          <div class="floppyDrive">
-            <div class="floppyShade"></div>
-            <div class="floppyShadeDarker"></div>
-            <div class="floppySlot"></div>
-          </div>
-        </div>
-        <div class="logoContainer">
-          <div class="logo"></div>
-        </div>
-      </section>
-      <section class="bottomDecor">
-        <div class="bottomButton"></div>
-      </section>
-    </main>
+            <p>
+                Welcome to Rishabh's portfolio — Type <span>help</span> for a list of supported commands.
+            </p>
+            <br>
+            <br>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+        const asciiText = document.getElementById('ascii-text');
+        const asciiArt = [
+            '      ██████╗ ██╗███████╗██╗  ██╗ █████╗ ██████╗ ██╗  ██╗',
+            '      ██╔══██╗██║██╔════╝██║  ██║██╔══██╗██╔══██╗██║  ██║',
+            '      ██████╔╝██║███████╗███████║███████║██████╔╝███████║',
+            '      ██╔══██╗██║╚════██║██╔══██║██╔══██║██╔══██╗██╔══██║',
+            '      ██║  ██║██║███████║██║  ██║██║  ██║██████╔╝██║  ██║',
+            '      ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝',
+            '                                                         ',
+
+        ];
+
+        function typewriterEffect(text, delay) {
+            return new Promise(resolve => {
+            let index = 0;
+            const interval = setInterval(() => {
+                asciiText.innerHTML += text[index++];
+                if (index >= text.length) {
+                clearInterval(interval);
+                resolve();
+                }
+            }, delay);
+            });
+        }
+
+        async function displayAsciiArt() {
+            for (let i = 0; i < asciiArt.length; i++) {
+            await typewriterEffect(asciiArt[i], 10); // Adjust the delay here (lower value for faster typing)
+            if (i < asciiArt.length - 1) {
+                asciiText.innerHTML += '<br>';
+            }
+            }
+        }
+
+        displayAsciiArt();
+        });
+
+
+
+</script>
+
+
+      <div class="ascii-art">
+        <pre id="ascii-text"></pre>
+      </div>
+      <div class="commands"></div>
+      <br>
+      <label for="command">rishabhchopda@rc9 ~ %<label>
+        <input id="command" type="text" autoComplete="on" autofocus/>
+    </div>
   </div>
   
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": {
-          "value": 200,
-          "density": {
-            "enable": true,
-            "value_area": 700
-          }
-        },
-        "color": {
-            "value": 'FF5F00',
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": '#FF5F00'
-          },
-          "polygon": {
-            "nb_sides": 15
-          }
-        },
-        "opacity": {
-          "random": false,
-          "anim": {
-            "enable": false,
-            "speed": 1.5,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 4.5,
-          "random": false,
-          "anim": {
-            "enable": true,
-            "speed": 2,
-            "size_min": 0.15,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 80,
-          "color": '#988b73',
-          "width": 3
-        },
-        "move": {
-          "enable": true,
-          "speed": 1.6,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "repulse"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 400,
-            "line_linked": {
-              "opacity": 1
-            }
-          },
-          "bubble": {
-            "distance": 100,
-            "size": 80,
-            "duration": 2,
-            "speed": 3
-          },
-          "repulse": {
-            "distance": 50,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          },
-          "remove": {
-            "particles_nb": 2
-          }
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
-  <script src="script.js"></script>
-  <footer>
-    <ul>
-        <li>
-            <a href="https://github.com/rishabhc9" id="f"><i class="fab fa-github"></i></a>
-        </li>
 
-        <li>
-            <a href="https://www.linkedin.com/in/rishabh-chopda-16b378151/" id="l"><i class="fab fa-linkedin-in"></i></a>
-        </li>
-        <li>
-            <a href="https://www.instagram.com/rishabh.chopda9/" id="i"><i class="fab fa-instagram"></i></a>
-        </li>
-    </ul>
-  </footer>
+  <div class="container2">
+    <div class="center">
+<button onclick="downloadPDF()">
+  <span>Download CV</span><i></i>
+</button>
+</div>
+</div>
+
+
+
+<script>
+  function downloadPDF() {
+    // Replace 'path/to/pdf.pdf' with the actual path to your PDF file
+    const pdfURL = 'assets/pdf/Rishabh Chopda - Resume.pdf';
+
+    // Create an anchor element
+    const link = document.createElement('a');
+
+    // Set the href attribute to the PDF file URL
+    link.href = pdfURL;
+
+    // Set the download attribute to specify the file name
+    link.download = 'Rishabh Chopda - Resume.pdf';
+
+    // Programmatically click the link to start the download
+    link.click();
+  }
+</script>
+
+
+
+<footer>
+  <link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <ul>
+         <li><a href="https://github.com/rishabhc9"></a></li>
+         <li><a href="https://www.instagram.com/rishabh.chopda9/"></a></li>
+         <li><a href="mailto:rishabhchopda79@gmail.com"></a></li>
+         <li><a href="https://www.linkedin.com/in/rishabh-chopda-16b378151/"></a></li>
+     </ul>
+    </footer>
+    
+      
+<script src="script.js"></script>
+
 </body>
 </html>
