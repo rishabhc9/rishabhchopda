@@ -1,281 +1,193 @@
-const input = document.querySelector('input');
-document.addEventListener('keydown', function(e) {
-  if (e.keyCode === 13 && input.value) {
-    var node = document.createElement("DIV");
-    node.style.color = "#888";
-    node.style.fontSize = "1.5vw";
-    node.style.paddingLeft = '5px';
+var ENTER_KEY = 13;
+var fileSystem = {
+  'README.md': `Welcome to my portfolio!
 
-    const typeWriter = (text, element) => {
-      let i = 0;
-      const typing = () => {
-        if (i < text.length) {
-          element.innerHTML += text.charAt(i);
-          i++;
-          setTimeout(typing, 20);
-        }
-      };
-      typing();
-    };
+Supported commands are:
 
-  
-    if (input.value === 'help') {
-      const para = document.createElement("p");
-      para.style.display = 'block';
-      const text = 'rishabhchopda@rc9 ~ % Supported commands: about, clear, publications, projects, skills, contact, services';
-      typeWriter(text, para);
-      // Set the command label
-      document.querySelector(".commands").appendChild(para);
+  - ls: list directory contents
+  - cat: concatenate and print files
+  - clear: clear the terminal screen 
+  - projects: view my latest gitHub repositories
+  - publications: view my academic publications
+`,
 
-    } else if (input.value === 'about') {
-      const para = document.createElement("p");
-      const lineBreak9 = document.createElement("br");
-      para.appendChild(lineBreak9);
-      para.style.display = 'block';
-      const text0 = "rishabhchopda@rc9 ~ % About Me: ";
-      const text1 = "Extremely motivated to constantly develop my skills and grow professionally.";
-      const text2 = " I am a passionate technologist with a keen eye for detail and precision. I excel in meticulously designing and implementing robust automation systems using Python, ensuring precision in execution and delivering exceptional performance."; 
-      const text3 = " Skilled in languages like C, JavaScript, Python and SQL, I apply my knowledge to practical projects, transforming ideas into effective solutions. Currently, I work at Deloitte, where I leverage my background in computer engineering and passion for technology to drive innovation and make a positive impact.";
-      const text = `${text0}\n\n${text1}${text2}${text3}`;
-      
-      document.querySelector(".commands").appendChild(para);
-    
-      const typeWriter = (text, element) => {
-        let i = 0;
-        const typing = () => {
-          if (i < text.length) {
-            if (text.charAt(i) === '\n') {
-              element.appendChild(document.createElement("br"));
-            } else {
-              element.innerHTML += text.charAt(i);
-            }
-            i++;
-            setTimeout(typing, 20);
-          }
-        };
-        typing();
-      };
-    
-      typeWriter(text, para);
-    }else if (input.value === 'contact') {
-      const para = document.createElement("p");
-      const lineBreak9 = document.createElement("br");
-      para.appendChild(lineBreak9);
-      para.style.display = 'block';
-    
-      const link1 = document.createElement("a");
-      link1.href = '#';
-      link1.style.color = '#888';
-      link1.style.textDecoration = 'none';
-      const text1 = "rishabhchopda@rc9 ~ % Let's Connect Over:";
-      typeWriter(text1, link1);
-      para.appendChild(link1);
-      
-      const lineBreak0 = document.createElement("br");
-      para.appendChild(lineBreak0);
-      const lineBreak1 = document.createElement("br");
-      para.appendChild(lineBreak1);
-    
-      const link2 = document.createElement("a");
-      link2.href = 'https://wa.link/qoc7x2';
-      link2.style.color = '#fff';
-      const text2 = 'Whatsapp';
-      typeWriter(text2, link2);
-      para.appendChild(link2);
-    
-      const lineBreak2 = document.createElement("br");
-      para.appendChild(lineBreak2);
-    
-      const link3 = document.createElement("a");
-      link3.href = 'mailto:rishabhchopda79@gmail.com';
-      link3.style.color = '#fff';
-      const text3 = 'Email';
-      typeWriter(text3, link3);
-      para.appendChild(link3);
-    
-      const lineBreak3 = document.createElement("br");
-      para.appendChild(lineBreak3);
-    
-      const link4 = document.createElement("a");
-      link4.href = 'https://www.linkedin.com/in/rishabh-chopda-16b378151/';
-      link4.style.color = '#fff';
-      const text4 = 'Linkedin';
-      typeWriter(text4, link4);
-      para.appendChild(link4);
+  'about.txt' :`Extremely motivated to constantly develop my skills and grow professionally. I am a passionate technologist with a keen eye for detail and precision. I excel in meticulously designing and implementing robust automation systems using Python, ensuring precision in execution and delivering exceptional performance. Skilled in languages like C, JavaScript, Python, and SQL, I apply my knowledge to practical projects, transforming ideas into effective solutions. Currently, I work at Deloitte, where I leverage my background in computer engineering and passion for technology to drive innovation and make a positive impact.`,
+  'skills.txt' : `I Work Well With:
+- Python (Flask, Selenium, PyAutoGUI, Scrapy)
+- HTML
+- CSS
+- JavaScript
+- PHP
+- SQL
+- C Language`,
+'services.txt' : `Services I Offer:
+- Task Scheduling and Workflow Automation
+- Excel Automation
+- Web Scraping and Crawling
+- Telegram and Discord BOTs Development
+- Document Generation and Processing
+- Bot Detection Bypass and IP Rotations
+- Test Automation`
+};
 
-    
-      document.querySelector(".commands").appendChild(para);
-    } else if (input.value === 'skills') {
+function Terminal() {
+  this.onKeyDown = this.onKeyDown.bind(this);
+  this.clearHistory = this.clearHistory.bind(this);
+  this.addHistory = this.addHistory.bind(this);
+  this.listFiles = this.listFiles.bind(this);
+  this.catFile = this.catFile.bind(this);
+  this.scrollToBottom = this.scrollToBottom.bind(this);
+  this.fetchGitHubData = this.fetchGitHubData.bind(this);
+  this.fetchPublications = this.fetchPublications.bind(this);
 
-      const para = document.createElement("p");
-      const lineBreak9 = document.createElement("br");
-      para.appendChild(lineBreak9);
-      
-      para.style.display = 'block';
-      para.style.width = '100%';
-      para.style.wordWrap = 'break-word';
-    
-      const skills = ['rishabhchopda@rc9 ~ % I Work Well With :',"- Python (Flask, Pandas, Selenium, PyAutoGUI, Scrapy, Beautiful Soup)", "- HTML", "- CSS", "- JS", "- PHP", "- SQL", "- C Language"];
-    
-      for (let i = 0; i < skills.length; i++) {
-        const text = skills[i];
-
-        const skillPara = document.createElement("p");
-        skillPara.style.margin = '0';
-        typeWriter(text, skillPara);
-        para.appendChild(skillPara);
-       
-      }
-      document.querySelector(".commands").appendChild(para);
-    } else if (input.value === 'services') {
-
-      const para = document.createElement("p");
-      const lineBreak9 = document.createElement("br");
-      para.appendChild(lineBreak9);
-      
-      para.style.display = 'block';
-      para.style.width = '100%';
-      para.style.wordWrap = 'break-word';
-    
-      const services = ['rishabhchopda@rc9 ~ % Services at a Glance :',"- Task Scheduling and Workflow Automation", "- Excel Automation", "- Web Scraping and Crawling", "- Telegram and Discord BOTs Development", "- Document Generation and Processing", "- Bot Detection Bypass and IP Rotations", "- Test Automation"];
-    
-      for (let i = 0; i < services.length; i++) {
-        const text = services[i];
-
-        const servicePara = document.createElement("p");
-        servicePara.style.margin = '0';
-        typeWriter(text, servicePara);
-        para.appendChild(servicePara);
-       
-      }
-      document.querySelector(".commands").appendChild(para);
-    } else if (input.value === 'projects') {
-      // Fetch the repositories from GitHub API
-      fetch('https://api.github.com/users/rishabhc9/repos?sort=created')
-        .then(response => response.json())
-        .then(data => {
-          // Sort repositories by creation date (latest first)
-          const repos = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-
-          // Display repositories on the webpage
-          const para = document.createElement("p");
-          const lineBreak9 = document.createElement("br");
-          para.appendChild(lineBreak9);
-          para.style.display = 'block';
-
-          if (repos.length > 0) {
-            const text = ' rishabhchopda@rc9 ~ % Latest GitHub repositories: ↑';
-            typeWriter(text, para);
-            repos.slice(0, 5).forEach(repo => {
-              const repoName = document.createElement("span");
-              repoName.style.fontWeight = 'bold';
-              repoName.innerText = repo.name;
-
-              const repoDescription = document.createElement("span");
-              repoDescription.style.color = '#888';
-              repoDescription.innerText = repo.description || 'No description';
-
-              const repoLink = document.createElement("a");
-              repoLink.href = repo.html_url;
-              repoLink.target = '_blank';
-              repoLink.style.textDecoration = 'none';
-              repoLink.style.color = '#0366d6';
-              repoLink.innerText = 'View on GitHub';
-
-              const repoEntry = document.createElement("p");
-              repoEntry.appendChild(repoName);
-              repoEntry.appendChild(document.createElement("br"));
-              repoEntry.appendChild(repoDescription);
-              repoEntry.appendChild(document.createElement("br"));
-              repoEntry.appendChild(repoLink);
-              repoEntry.style.marginBottom = '10px';
-
-              para.appendChild(repoEntry);
-            });
-          } else {
-            const text = ' rishabhchopda@rc9 ~ % No GitHub repositories found.';
-            typeWriter(text, para);
-          }
-
-          document.querySelector(".commands").appendChild(para);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-    }
-      else if (input.value === 'clear') {
-      const commandsContainer = document.querySelector(".commands");
-      while (commandsContainer.firstChild) {
-        commandsContainer.removeChild(commandsContainer.firstChild);
-    }
-    } else if (input.value === 'cls') {
-      const commandsContainer = document.querySelector(".commands");
-      while (commandsContainer.firstChild) {
-        commandsContainer.removeChild(commandsContainer.firstChild);
-      }
-    }
-    else if (input.value === 'publications') {
-      // Fetch publications from ORCID API
-      fetch('https://pub.orcid.org/v3.0/0000-0003-4840-8673/works', {
-        headers: {
-          Accept: 'application/json',
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data); // Log the API response to examine its structure
-    
-          const publications = data.group;
-    
-          // Display publications on the webpage
-          const para = document.createElement("p");
-          const lineBreak9 = document.createElement("br");
-          para.appendChild(lineBreak9);
-          para.style.display = 'block';
-    
-          if (publications && publications.length > 0) {
-            const text = ' rishabhchopda@rc9 ~ % My publications: ↑';
-            typeWriter(text, para);
-    
-            publications.forEach(group => {
-              const workSummaries = group['work-summary'];
-    
-              workSummaries.forEach(work => {
-                const title = work.title.title?.value || 'Untitled';
-                const journal = work['journal-title']?.value || 'Unknown Journal';
-                const year = work['publication-date']?.year?.value || 'Unknown Year';
-    
-                const publicationEntry = document.createElement("p");
-                publicationEntry.innerHTML = `<strong>${title}</strong><br>${journal}, ${year}`;
-                publicationEntry.style.marginBottom = '10px';
-    
-                para.appendChild(publicationEntry);
-              });
-            });
-          } else {
-            const text = ' rishabhchopda@rc9 ~ % No publications found.';
-            typeWriter(text, para);
-          }
-    
-          document.querySelector(".commands").appendChild(para);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-    }
-     else {
-      const para = document.createElement("p");
-      para.style.display = 'block';
-      const text = 'rishabhchopda@rc9 ~ % command not found: ' + input.value;
-      typeWriter(text, para);
-      document.querySelector(".commands").appendChild(para);
-    }
-
-    input.value = "";
-  }
-});
-
-function f() {
-  document.querySelector('input').focus();
+  this.history = [];
+  this.elements = {
+    input: document.querySelector('.input'),
+    terminal: document.querySelector('.terminal'),
+    outputContainer: document.querySelector('.outputContainer')
+  };
+  this.prompt = '$';
+  this.commands = {
+    clear: this.clearHistory,
+    ls: this.listFiles,
+    cat: this.catFile,
+    projects: this.fetchGitHubData,
+    publications: this.fetchPublications
+  };
+  this.elements.input.addEventListener('keydown', this.onKeyDown);
+  this.catFile('README.md');
 }
 
+Terminal.prototype.clearHistory = function() {
+  this.history = [];
+  this.elements.outputContainer.innerHTML = '';
+};
+
+Terminal.prototype.catFile = function(fileName) {
+  if (fileName in fileSystem) 
+    this.addHistory(fileSystem[fileName]);
+  else 
+    this.addHistory('cat: ' + fileName + ': No such file or directory');
+};
+
+Terminal.prototype.scrollToBottom = function() {
+  this.elements.terminal.scrollTop = this.elements.terminal.scrollHeight;
+};
+
+Terminal.prototype.addHistory = function(output) {
+  this.history.push(output);
+ 
+  var outputEl = document.createElement('pre');
+  outputEl.classList.add('output');
+  outputEl.innerHTML = output; // Use innerHTML to render links
+  this.elements.outputContainer.appendChild(outputEl);
+  this.scrollToBottom();
+};
+
+Terminal.prototype.listFiles = function(dir) {
+  var output = Object.keys(fileSystem).reduce(function(acc, curr, index) {
+    var deliminator = index % 3 === 0 && index !== 0 ? '\n' : '\t';
+    return acc + curr + deliminator;
+  }, '');
+  
+  this.addHistory(output);
+};
+
+Terminal.prototype.clearInput = function() {
+  this.elements.input.value = '';
+};
+
+Terminal.prototype.onKeyDown = function(e) {
+  // Only respond to Enter key presses
+  if (e.keyCode !== ENTER_KEY) return;
+  
+  var inputText = this.elements.input.value.trim();
+  var inputArray = inputText.split(' ');
+  var inputCommand = inputArray[0];
+  var arg = inputArray.slice(1).join(' '); // Join arguments with spaces
+
+  this.addHistory(this.prompt + ' ' + inputText);
+  this.clearInput();
+  
+  /* If the command line was empty, stop. 
+     We don't want to interpret it as a command.
+     It's fine to feed a lint to the terminal */
+  if (inputCommand === '') return;
+
+  var command = this.commands[inputCommand];
+  
+  if (command)
+    command(arg);
+  else
+    this.addHistory('sh: command not found: ' + inputCommand);
+};
+
+Terminal.prototype.fetchGitHubData = function() {
+  fetch('https://api.github.com/users/rishabhc9/repos?sort=created')
+    .then(response => response.json())
+    .then(data => {
+      // Sort repositories by creation date (latest first)
+      const repos = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+      // Prepare output message
+      let output = '';
+      if (repos.length > 0) {
+        output += 'Latest GitHub repositories:\n\n';
+        repos.slice(0, 5).forEach(repo => {
+          output += `${repo.name}\n`;
+          output += `${repo.description || 'No description'}\n`;
+          output += `View Project on GitHub: <a href="${repo.html_url}" target="_blank">${repo.html_url}</a>\n\n`;
+        });
+      } else {
+        output += 'No GitHub repositories found.';
+      }
+
+      // Add to terminal history
+      this.addHistory(output);
+    })
+    .catch(error => {
+      console.error('Error fetching GitHub data:', error);
+      this.addHistory('Error fetching GitHub repositories.');
+    });
+};
+
+Terminal.prototype.fetchPublications = function() {
+  fetch('https://pub.orcid.org/v3.0/0000-0003-4840-8673/works', {
+    headers: {
+      Accept: 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); // Log the API response to examine its structure
+
+      const publications = data.group;
+
+      // Prepare output message
+      let output = '';
+      if (publications && publications.length > 0) {
+        output += 'My publications:\n\n';
+        publications.forEach(group => {
+          const workSummaries = group['work-summary'];
+          workSummaries.forEach(work => {
+            const title = work.title.title?.value || 'Untitled';
+            const journal = work['journal-title']?.value || 'Unknown Journal';
+            const year = work['publication-date']?.year?.value || 'Unknown Year';
+            output += `${title} (${journal}, ${year})\n\n`;
+          });
+        });
+      } else {
+        output += 'No publications found.';
+      }
+
+      // Add to terminal history
+      this.addHistory(output);
+    })
+    .catch(error => {
+      console.error('Error fetching publications:', error);
+      this.addHistory('Error fetching publications.');
+    });
+};
+
+// Initialize the terminal
+new Terminal();
